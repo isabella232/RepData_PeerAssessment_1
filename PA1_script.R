@@ -10,7 +10,9 @@ dat$date <- as.Date(dat$date,format = "%Y-%m-%d")
 sums <- tapply(dat$steps, dat$date, sum, na.rm=T)
 
 #plot a histogram of sums
+png("plot1.png", width = 480, height = 480)
 hist(sums, breaks = 20, col="grey")
+dev.off()
 
 #get median and mean:
 summary(sums)
@@ -21,8 +23,10 @@ summary(sums)
 av <- aggregate(dat$steps, by=list(interval=dat$interval), FUN=mean, na.rm=TRUE)
 
 #time series plot for steps per interval:
+png("plot2.png", width = 480, height = 480)
 plot(av$interval, av$x, type="l", xlab="interval", ylab="average number of steps", 
      main="average number of steps per interval")
+dev.off()
 
 #find the max:
 av[which.max(av$x),]
@@ -46,7 +50,9 @@ for (i in 1:length(dat$steps)){
 sums <- tapply(dat.filled$steps, dat.filled$date, sum)
 
 #plot a histogram of sums
+png("plot3.png", width = 480, height = 480)
 hist(sums, breaks = 20, col="grey")
+dev.off()
 
 #get median and mean:
 summary(sums)
@@ -71,6 +77,7 @@ dat.filled$weekday <- as.factor(dat.filled$weekday)
 #calculate the interval means for 
 av <- aggregate(steps ~ interval + weekday, data=dat.filled, mean)
 #plot the result:
+png("plot4.png", width = 480, height = 480)
 par(mfrow=c(2,1), mar=c(3,4,2,1))
 plot(subset(av, av$weekday=="weekday")$interval , subset(av, av$weekday=="weekday")$steps, 
      type="l", xlab="interval", ylab="average number of steps", 
@@ -78,5 +85,5 @@ plot(subset(av, av$weekday=="weekday")$interval , subset(av, av$weekday=="weekda
 plot(subset(av, av$weekday=="weekend")$interval , subset(av, av$weekday=="weekend")$steps, 
      type="l", xlab="interval", ylab="average number of steps", 
      main="average number of steps per interval on weekends")
-
+dev.off()
 
