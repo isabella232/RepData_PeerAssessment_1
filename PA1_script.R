@@ -1,5 +1,3 @@
-setwd("C:/Users/Gerrit/repdata_assignment_1")
-
 #read in the data:
 dat <- read.csv("activity.csv", header = T, colClasses=c("numeric", "character", "numeric"))
 
