@@ -62,7 +62,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h2>Loading and preprocessing the data</h2>
 <p>The data was downloaded from <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip">https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip</a> , copied to a working directory and unzipped by 7-Zip (<a href="http://www.7-zip.org/">http://www.7-zip.org/</a> version 15.14 (2015-12-31)). The data was read into R by <em>read.csv()</em>:</p>
 <pre class="r"><code>dat &lt;- read.csv(&quot;activity.csv&quot;, header = T, colClasses=c(&quot;numeric&quot;, &quot;character&quot;, &quot;numeric&quot;))</code></pre>
-<p>The date was read-in as character and subsequently transformed to â€œdateâ€ format.</p>
+<p>The date was read-in as character and subsequently transformed to “date” format.</p>
 <pre class="r"><code>dat$date &lt;- as.Date(dat$date,format = &quot;%Y-%m-%d&quot;)</code></pre>
 </div>
 <div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level2">
@@ -119,7 +119,7 @@ hist(sums, breaks = 20, col=&quot;grey&quot;)</code></pre>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
-<p>Weekdays were identified with the function <em>weekdays()</em> and subsequently classified as weekend (== â€œSundayâ€ | == â€œSaturdayâ€) or weekdays (all other days). The new factor column was saved in <em>dat.filled$weekday</em>.</p>
+<p>Weekdays were identified with the function <em>weekdays()</em> and subsequently classified as weekend (== “Sunday” | == “Saturday”) or weekdays (all other days). The new factor column was saved in <em>dat.filled$weekday</em>.</p>
 <pre class="r"><code>dat.filled$weekday &lt;- weekdays(dat.filled$date)
 
 for (i in 1:length(dat.filled$weekday)){
